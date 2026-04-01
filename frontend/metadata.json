@@ -1,0 +1,5 @@
+{
+  "name": "Aksara Bali Recognition Dashboard",
+  "description": "A dashboard for EEG signal analysis of imagined Balinese script speech using Long Short-Term Memory networks.",
+  "requestFramePermissions": []
+}

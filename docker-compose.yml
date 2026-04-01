@@ -1,0 +1,29 @@
+services:
+  # Program 1: Menjalankan dataset DREAMER
+  streamer:
+    build: ./streamer
+    # LSL (Lab Streaming Layer) menggunakan UDP broadcast. 
+    # network_mode "host" sangat disarankan agar stream terdeteksi di jaringan lokal.
+    network_mode: "host" 
+
+  # Program 2: Server WebSocket Node.js
+  websocket:
+    build: ./websocket
+    ports:
+      - "8081:8081" # Sesuaikan dengan port yang Anda gunakan
+
+  # Program 3: Visual Web React.js (Local Dev)
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173" # Port default React
+    environment:
+      - CHOKIDAR_USEPOLLING=true # Memastikan fitur auto-reload React berfungsi di dalam Docker
+    volumes:
+      - ./frontend:/app # Sinkronisasi kode lokal dengan dalam container
+      - /app/node_modules
+
+  # Program 4: Preprocessing & Classification Model Hibrida
+  classifier:
+    build: ./classifier
+    network_mode: "host" # Harus "host" agar bisa menangkap stream LSL dari Program 1

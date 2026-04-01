@@ -1,0 +1,6 @@
+numpy
+onnxruntime
+onnxruntime_gpu
+pylsl
+scipy
+websocket_client

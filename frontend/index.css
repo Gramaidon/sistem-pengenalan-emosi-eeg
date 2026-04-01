@@ -1,0 +1,16 @@
+/* Add these styles to your existing index.css */
+
+.app-container {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure smooth scrolling for all elements */
+* {
+  scroll-behavior: smooth;
+}
